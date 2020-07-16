@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulacion</title>
+    <link rel="stylesheet" href="../style/estilos.css">
+    <script type="text/javascript" src="../lib/libgif.js"></script>
+	<link rel="stylesheet" href="../style/bootstrap.min.css">
+    
+
+</head>
+<body>
+    <div id="reloj">
+
+    </div>
+    <div class="termometro">
+        <canvas id="canvas-id" ></canvas>
+    </div>
+     <form action="" id="parametroRandom">
+        <div class="form-group" >
+            <select  id="menor">
+              <option selected="">Valor Minimo</option>
+              
+              <option value="30">30</option>
+            </select>
+            <select  id="mayor">
+                <option selected="">Valor Maximo</option>
+                
+                <option value="40">40</option>
+                
+              </select>
+              
+          </div>
+          <button >asignar</button>
+     </form>  
+     
+     <div>
+         <img id="example1"  src="../img/ventilador.jpg" rel:animated_src="../img/ventilador.gif" rel:auto_play="0"   >
+        
+        <img id="example2" src="../img/calentador.jpg" rel:animated_src="../img/calentador.gif" rel:auto_play="0" />
+         
+     </div>
+     
+     <div >
+         <h2>sensor</h2>
+         <table>
+             <thead>
+                 <tr>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Id </font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Nombre </font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Fecha </font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Hora </font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Tiempo de ejecucion </font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Diferencia de tiempo </font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> lectura</font> </font> </th>
+                    <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> alerta </font> </font> </th>
+
+                 </tr>
+             </thead>
+             <tbody id="sensorDiv">
+                
+             </tbody>
+         </table>
+     </div>
+     <div >
+         <h2>calentador</h2>
+        <table>
+            <thead>
+                <tr>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Id </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Nombre </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Fecha </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Hora </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Tiempo de ejecucion (ms)</font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Diferencia de tiempo (ms)</font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Tiempo activo(s)</font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Estado </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> alerta </font> </font> </th>
+
+                </tr>
+            </thead>
+            <tbody id="calentadorDiv">
+               
+            </tbody>
+        </table>
+    </div>
+    <div >
+         <h2>ventilador</h2>
+        <table>
+            <thead>
+                <tr>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Id </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Nombre </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Fecha </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Hora </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Tiempo de ejecucion (ms)</font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Diferencia de tiempo (ms)</font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Tiempo activo(s)</font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> Estado </font> </font> </th>
+                   <th scope = "col"> <font style = "vertical-align: heredar;"> <font style = "vertical-align: heredar;"> alerta </font> </font> </th>
+
+                </tr>
+            </thead>
+            <tbody id="ventiladorDiv">
+               
+            </tbody>
+        </table>
+    </div>
+         
+        
+        
+        <div><input id="res" type="hidden" name="" value="0"></div>
+        <div><input id="calentador" type="hidden" name="" value="0"></div>
+        <script type="text/javascript">
+            var sup1 = new SuperGif({ gif: document.getElementById('example1') } );
+            sup1.load();
+            var inicio;
+            let num=0;
+            setInterval(()=>{
+                var dato=document.getElementById('res');
+                let dato2=dato.value;
+               
+                if(dato2==1 && num==0){
+                     inicio=performance.now();
+                    sup1.play();
+                    num=1;
+                }
+                if(dato2==2 && num==1){
+                    sup1.pause();
+                    num=0;
+                    let fin=performance.now();
+                    let da=document.getElementById('tventilador');
+                    da.value=(fin-inicio)/1000;
+                   // console.log('tiempo ventilador = '+(fin-inicio))
+                }
+            },10)
+
+        </script>
+        <input id="tventilador" type="hidden" name="" value="0">
+        
+        
+        <script type="text/javascript">
+            var sup2 = new SuperGif({ gif: document.getElementById('example2') } );
+            sup2.load();
+            
+              
+            var inicio1;
+            var num2=0;
+            setInterval(()=>{
+                var dato=document.getElementById('calentador');
+                let dato2=dato.value;
+               
+                if(dato2==1 && num2==0){
+                     inicio1=performance.now();
+                    sup2.play();
+                    num2=1;
+                }
+                if(dato2==2 && num2==1){
+                    sup2.pause();
+                    num2=0;
+                    let fin=performance.now();
+                    let da=document.getElementById('tcalentador');
+                    da.value=(fin-inicio1)/1000;
+                   // console.log('tiempo calentador = '+(fin-inicio1))
+                }
+            },10)
+        </script>
+        <input id="tcalentador" type="hidden" name=""  value="0">
+
+  
+    <script src="../app/termometro.js"></script>
+    
+</body>
+</html>

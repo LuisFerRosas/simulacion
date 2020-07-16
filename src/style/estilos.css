@@ -1,0 +1,24 @@
+.termometro{
+    margin-left: 700px;
+    
+}
+#example2{
+    height: 200px;
+    width: 200px;
+    border-color: blue;
+}
+
+#example1{
+    height: 200px;
+    width: 200px;
+    border-color: blue;
+}
+#image{
+    padding: 10px;
+    border-color: brown;
+}
+
+canvas{
+    height: 200px;
+    width: 200px;
+}
