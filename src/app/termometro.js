@@ -6,6 +6,8 @@ const database= require('../config/database');
 const sensorDiv=document.getElementById('sensorDiv');
 const calentadorDiv=document.getElementById('calentadorDiv');
 const ventiladorDiv=document.getElementById('ventiladorDiv');
+const btnPlay =document.getElementById('play');
+const btnStop = document.getElementById('stop');
 var menor =0;
 var parametro=0;
 parametros.addEventListener('submit',(e)=>{
@@ -94,84 +96,100 @@ setInterval(function() {
     gauge.value = value;
     parametro=value;
   
-  }, 3000);
+}, 3000);
 
 async function init(){
     await renderSensor();
     await renderCalentador();
     await renderVentilador();
 }
+var id=null;
+btnPlay.addEventListener("click",function(){
+    
+     id=setInterval(() => {
 
-setInterval(() => {
-    
-    let inicio=performance.now();
-    if(menor!=0){
-    
-    
-    if (parametro<menor) {
-        
-        console.warn("encender calentador");
-        console.log('temperatura '+parametro)
-        encenderCalentador();
+        let inicio=performance.now();
+        if(menor!=0){
         
         
-        apagarVentilador();
-    }else{
-        if (parametro>mayor) {
-            console.warn("encender ventilador")
-            console.log('temperatura '+parametro)
-            encenderVentilador();
-
-            apagarCalentador();
+        if (parametro<menor) {
             
+            console.warn("encender calentador");
+            console.log('temperatura '+parametro)
+            encenderCalentador();
+            
+            
+            apagarVentilador();
         }else{
-            let res2=document.getElementById('res');
-            let cal2=document.getElementById('calentador');
-            if(res2.value!=0|| cal2.value!=0){
-                if(parametro>menor && parametro<mayor){
-                   // console.log('apagando todo')
-                    console.log(parametro + " cada 5 segundos");
-                    apagarVentilador();
-                    apagarCalentador();
+            if (parametro>mayor) {
+                console.warn("encender ventilador")
+                console.log('temperatura '+parametro)
+                encenderVentilador();
+    
+                apagarCalentador();
+                
+            }else{
+                let res2=document.getElementById('res');
+                let cal2=document.getElementById('calentador');
+                if(res2.value!=0|| cal2.value!=0){
+                    if(parametro>menor && parametro<mayor){
+                       // console.log('apagando todo')
+                        console.log(parametro + " cada 5 segundos");
+                        apagarVentilador();
+                        apagarCalentador();
+                        
+                    }
                     
                 }
-                
-            }
-        
-            }
-           
-        } 
-        
-    }
-    let final=performance.now();
-    let tiempoSensor=final-inicio;
-    let fecha=new Date();
-    var alerta=false;
-    if(parametro>mayor || parametro<menor){
-        alerta=true;
-    }
-    /*
-    console.log("///////////////////////////////");
-    console.log(fecha.toLocaleDateString());
-    console.log(fecha.toLocaleTimeString());
-    console.log('tiempo de ejecucion = '+tiempoSensor);
-    console.log('diferencia de tiempo = '+(10-tiempoSensor));
-    console.log('temperatura = '+parametro);
-    console.log(alerta);
-    console.log("///////////////////////////////");*/
-    database.sensor.create({
-        Nombre:"termometro1 ",
-        Fecha:fecha.toLocaleDateString(),
-        Hora:fecha.toLocaleTimeString(),
-        Tiempo_Ejecucion:tiempoSensor,
-        Diferencia_de_Tiempo:10-tiempoSensor,
-        Lectura:parametro,
-        Alerta:alerta,
-
-    });
+            
+                }
+               
+            } 
+            
+        }
+        let final=performance.now();
+        let tiempoSensor=final-inicio;
+        let fecha=new Date();
+        var alerta=false;
+        if(parametro>mayor || parametro<menor){
+            alerta=true;
+        }
+        /*
+        console.log("///////////////////////////////");
+        console.log(fecha.toLocaleDateString());
+        console.log(fecha.toLocaleTimeString());
+        console.log('tiempo de ejecucion = '+tiempoSensor);
+        console.log('diferencia de tiempo = '+(10-tiempoSensor));
+        console.log('temperatura = '+parametro);
+        console.log(alerta);
+        console.log("///////////////////////////////");*/
+        database.sensor.create({
+            Nombre:"termometro1 ",
+            Fecha:fecha.toLocaleDateString(),
+            Hora:fecha.toLocaleTimeString(),
+            Tiempo_Ejecucion:tiempoSensor,
+            Diferencia_de_Tiempo:10-tiempoSensor,
+            Lectura:parametro,
+            Alerta:alerta,
     
-    init();
-}, 5000);
+        });
+        
+        init();
+    
+        }, 5000);
+ 
+
+    
+})
+
+btnStop.addEventListener('click',function(){
+    clearInterval(id);
+})
+
+
+
+
+
 
 
 var fecha=new Date();
