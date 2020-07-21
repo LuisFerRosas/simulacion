@@ -11,24 +11,23 @@
 
 </head>
 <body>
-    <div id="reloj">
-
-    </div>
-    <div class="termometro">
-        <canvas id="canvas-id" ></canvas>
-    </div>
+    
+    <div class="datos">
      <form action="" id="parametroRandom">
+        <div id="reloj"></div>
         <div class="form-group" >
-            
-            <input id="menor" type="text">
-            <input id="mayor" type="text">
+            <input id="menor" type="text" placeholder="Valor mínimo">
+            <input id="mayor" type="text" placeholder="Valor máximo">
         </div>
-          <button >asignar</button>
+          <button class="boton b-verde" >Asignar</button>
+          <button class="boton b-azul" type="button" id="play">Play</button>
+          <button class="boton b-rojo" type="button"  id="stop">Stop</button>
      </form>  
-     
-    <button id="play">Play</button>
-    <button id="stop">Stop</button>
-     <div>
+     <div class="termometro">
+        <canvas id="canvas-id" ></canvas>
+     </div>
+    </div>
+     <div class="imgs">
          <img id="example1"  src="../img/ventilador.jpg" rel:animated_src="../img/ventilador.gif" rel:auto_play="0"   >
         
         <img id="example2" src="../img/calentador.jpg" rel:animated_src="../img/calentador.gif" rel:auto_play="0" />
@@ -36,7 +35,8 @@
      </div>
      
      <div >
-         <h2>sensor</h2>
+         <h2 class="titulo">sensor</h2>
+         <div class="contenidos">
          <table>
              <thead>
                  <tr>
@@ -51,13 +51,14 @@
 
                  </tr>
              </thead>
-             <tbody id="sensorDiv">
-                
-             </tbody>
+             <tbody id="sensorDiv">             </tbody>
          </table>
+         </div>
+
      </div>
      <div >
-         <h2>calentador</h2>
+         <h2 class="titulo">calentador</h2>
+         <div class="contenidos">
         <table>
             <thead>
                 <tr>
@@ -77,9 +78,12 @@
                
             </tbody>
         </table>
+        </div>
+
     </div>
-    <div >
-         <h2>ventilador</h2>
+    <div>
+         <h2 class="titulo">ventilador</h2>
+         <div class="contenidos">
         <table>
             <thead>
                 <tr>
@@ -99,6 +103,8 @@
                
             </tbody>
         </table>
+        </div>
+        </div>
     </div>
          
         
@@ -134,6 +140,18 @@
         
         
         <script type="text/javascript">
+            let hora  = document.getElementById('reloj')
+
+                function getHora(){
+                let tiempo = new Date()
+                let hrs = tiempo.getHours();
+                let min = tiempo.getMinutes();
+                let seg = tiempo.getSeconds(); 
+                hora.innerHTML = '<b>'+hrs+':'+min+':'+seg+'</b>';
+                }
+                 setInterval(() => {
+            getHora()
+            }, 1000);
             var sup2 = new SuperGif({ gif: document.getElementById('example2') } );
             sup2.load();
             

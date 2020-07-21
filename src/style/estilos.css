@@ -1,13 +1,13 @@
-.termometro{
-    margin-left: 700px;
-    
-}
+/* .termometro{} */
 #example2{
     height: 200px;
     width: 200px;
     border-color: blue;
 }
-
+#reloj{
+    font-size: 20px;
+    margin-bottom: 16px;
+}
 #example1{
     height: 200px;
     width: 200px;
@@ -17,8 +17,83 @@
     padding: 10px;
     border-color: brown;
 }
-
+#parametroRandom{
+    text-align: center;
+}
+#menor,
+#mayor{
+    padding: 8px;
+    max-width: 128px;
+    border: solid 1px #ddd;
+    border-radius: 10px;
+}
 canvas{
     height: 200px;
     width: 200px;
+    border-radius: 12px;
+}
+.contenidos{
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+table, tr,td, th{
+    border: solid 1px #ddd;
+}
+td{
+    padding: 4px;
+}
+th{
+    padding: 8px 4px;
+}
+
+.boton{
+    border: none;
+    padding: 8px 10px;
+    color: white;
+    display: inline-block;
+    margin: 12px 2px;
+    min-width: 80px;
+    border-radius: 8px;
+}
+.b-azul{
+    background-color: #5a5ad3;
+}
+.b-rojo{
+    background-color: red;
+}
+.b-verde{
+    background-color: limegreen;
+}
+.boton:hover{
+    box-shadow: 0 0 6px hsla(0, 0%, 0%, 0.4);
+}
+.imgs{
+    display: flex;
+    justify-content: space-around;
+    max-width: 600px;
+    margin: auto;
+
+}
+.datos{
+    display: flex;
+    justify-content: space-around;
+    max-width: 600px;
+    align-items: center;
+    margin: auto;
+    padding: 12px;
+    background-color: #e6e6e6;
+    margin-bottom: 12px;
+
+}
+.titulo{
+    margin-left: 10px;
+    color: slateblue;
+    text-transform: uppercase;
+    margin-bottom: 0;
 }
