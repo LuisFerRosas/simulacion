@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "canvas-gauges": "^2.1.7",
-    "electron": "^9.1.0",
+    "electron": "^13.6.6",
     "electron-reload": "^1.5.0",
     "mysql2": "^2.1.0",
     "sequelize": "^6.3.3"
